@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Inscritos</title>
+    <style>
+        table {
+            border-collapse: collapse; 
+            width: 60%; 
+            margin: 0 auto;
+        }
+        th, td {
+            border: 2px solid black; 
+            padding: 2px; 
+            text-align: left; 
+        }
+        h1{
+            text-align: center;
+        }
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+        .encabezado {
+            border: 2px solid rgb(18, 18, 19);
+            border-collapse: collapse; 
+            padding: 10px;
+            width: 50%;
+            margin: 0 auto;
+        }
+        #a1 {
+            display: block;
+            margin: 0; 
+            padding: 5px 0; 
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Inscritos</h1>
+    <br>
+    <div class="contenedor">
+        <a href="{{ url_for('nuevo') }}" id="a1"><button>Nuevo</button></a>
+        <br>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Turno</th>
+                <th>Seminarios</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for item in seminarios %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.fecha }}</td>
+                <td>{{ item.nombre }} </td>
+                <td>{{ item.apellidos }}</td>
+                <td>{{ item.turno }}</td>
+                <td>{{ item.curso }}</td>
+                <td><a href="{{ url_for('editar',id=item.id)}}">Editar</a></td>
+                <td><a href="{{ url_for('eliminar',id=item.id)}}" >Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </table>    
+    </div>
+    
+</body>
+</html>

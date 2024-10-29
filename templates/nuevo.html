@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro en Seminarios</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        .contenedor {
+            display: inline-block;
+            vertical-align: top; 
+            margin-right: 20px; 
+            border: 1px solid #070707; 
+            padding: 10px; 
+            margin-right: 20px;
+            border-radius: 5px; 
+            width: 25%; 
+            text-align: left;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 20px; 
+        }
+        h1{
+        color: #333;
+        text-align: center;
+        }   
+
+    </style>
+</head>
+<body>
+    <h1>Registro en Seminarios</h1>
+    <form action="{{ url_for('nuevo') }}" method="POST">
+        <div class="contenedor">
+            Datos: <br><br>
+            <table>
+                <tr>
+                    <td>Fecha:</td><td><input type="date" name="fecha" required></td>
+                </tr>
+                <tr>    
+                    <td>Nombre:</td><td><input type="text" name="nombre" required></td>
+                </tr>
+                <tr>
+                    <td>Apellidos:</td><td><input type="text" name="apellidos" required></td>
+                </tr>    
+                <tr>
+                    <td>Turno:</td>
+                    <td>
+                        <input type="radio" name="turno" value="Mañana">Mañana
+                        <input type="radio" name="turno" value="Tarde">Tarde
+                        <input type="radio" name="turno" value="Noche">Noche
+                    </td>
+                </tr>    
+                    
+                </tr>
+            </table>          
+        </div>
+        <div class="contenedor">
+            Seminarios disponibles: <br><br>
+            <input type="checkbox" name="curso" value="Inteligencia Artificial">Inteligencia Artificial <br>
+            <input type="checkbox" name="curso" value="Machine Learning">Machine Learning <br>
+            <input type="checkbox" name="curso" value="Simulación con Arena">Simulación con Arena <br>
+            <input type="checkbox" name="curso" value="Robótica Educativa">Robótica Educativa <br>
+        </div>
+        <br>
+        <div class="submit-container">
+            <input type="submit" value="Enviar Registro">
+        </div>
+    </form>
+</body>
+</html>

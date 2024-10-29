@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registro</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        .contenedor {
+            display: inline-block;
+            vertical-align: top; 
+            margin-right: 20px; 
+            border: 1px solid #070707; 
+            padding: 10px; 
+            margin-right: 20px;
+            border-radius: 5px; 
+            width: 25%; 
+            text-align: left;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 20px; 
+        }
+        h1{
+        color: #333;
+        text-align: center;
+        }   
+
+    </style>
+</head>
+<body>
+    <h1>Editar Registro</h1>
+    <form action="{{ url_for('editar', id=seminario.id) }}" method="POST">
+        <div class="contenedor">
+            <table>
+                <tr>
+                    <td>Fecha:</td><td><input type="date" name="fecha" value="{{ seminario['fecha'] }}" required></td>
+                </tr>
+                <tr>
+                    <td>Nombre:</td><td><input type="text" name="nombre" value="{{ seminario['nombre'] }}" required></td>
+                </tr>
+                <tr>
+                    <td>Apellidos:</td><td><input type="text" name="apellidos" value="{{ seminario['apellidos'] }}" required></td>
+                </tr>
+                <tr>
+                   <td>Turno:</td>
+                    <td>
+                        <input type="radio" name="turno" value="Mañana" {% if seminario['turno'] == 'Mañana' %}checked{% endif %}>Mañana
+                        <input type="radio" name="turno" value="Tarde" {% if seminario['turno'] == 'Tarde' %}checked{% endif %}>Tarde
+                        <input type="radio" name="turno" value="Noche" {% if seminario['turno'] == 'Noche' %}checked{% endif %}>Noche
+                    </td> 
+                </tr>
+            </table>
+        </div>
+        <div class="contenedor">
+            Seminarios disponibles: <br>
+            <input type="checkbox" name="curso" value="Inteligencia Artificial" {% if 'Inteligencia Artificial' in seminario['curso'] %}checked{% endif %}>Inteligencia Artificial <br>
+            <input type="checkbox" name="curso" value="Machine Learning" {% if 'Machine Learning' in seminario['curso'] %}checked{% endif %}>Machine Learning <br>
+            <input type="checkbox" name="curso" value="Simulación con Arena" {% if 'Simulación con Arena' in seminario['curso'] %}checked{% endif %}>Simulación con Arena <br>
+            <input type="checkbox" name="curso" value="Robótica Educativa" {% if 'Robótica Educativa' in seminario['curso'] %}checked{% endif %}>Robótica Educativa <br>
+        </div>
+        <div class="submit-container">
+            <input type="submit" value="Editar Registro">
+        </div>
+    </form>
+</body>
+</html>
